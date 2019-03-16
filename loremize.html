@@ -1,0 +1,64 @@
+<meta charset="utf-8">
+<style>
+    *
+    {
+        padding : 0;
+        margin : 0;
+    }
+</style>
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <textarea id="OldText" style="width:49vw;height:92vh"></textarea>
+            </td>
+            <td>
+                <textarea id="NewText" style="width:49vw;height:92vh"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="Loremize()" style="font-size:2vh">Loremize</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<script>
+    function Loremize()
+    {
+        var
+            old_letter_list_text,
+            old_text,
+            new_letter_list_text,
+            new_text;
+
+        old_text = document.getElementById( "OldText" ).value;
+
+        old_letter_list_text = "oeuiya s rl mn td fvw cgxq hk pb jz";
+        new_letter_list_text = "euiyao s lr nm dt vwf gxqc kh bp zj";
+
+        old_letter_list_text += " " + old_letter_list_text.toUpperCase();
+        new_letter_list_text += " " + new_letter_list_text.toUpperCase();
+
+        new_text = "";
+
+        for ( old_character_index = 0;
+              old_character_index < old_text.length;
+              ++old_character_index )
+        {
+            old_character = old_text[ old_character_index ];
+
+            if ( ( old_character >= 'a' && old_character <= 'z' )
+                 || ( old_character >= 'A' && old_character <= 'Z' ) )
+            {
+                new_text += new_letter_list_text[ old_letter_list_text.indexOf( old_character ) ];
+            }
+            else
+            {
+                new_text += old_character;
+            }
+        }
+
+        document.getElementById( "NewText" ).value = new_text;
+    }
+</script>
