@@ -13,9 +13,9 @@
    version="1.1"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    xml:space="preserve"
-   width="923.96991"
-   height="881.37689"
-   viewBox="0 0 923.97002 881.37685"
+   width="1696.8456"
+   height="1619.2848"
+   viewBox="0 0 1696.8458 1619.2847"
    sodipodi:docname="loremize.svg"
    inkscape:export-filename="/home/eric/data/WORK/PROJECT/TOOL/LOREMIZE/LOGO/loremize.png"
    inkscape:export-xdpi="90"
@@ -32,43 +32,44 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="3840"
-     inkscape:window-height="2136"
+     inkscape:window-width="1920"
+     inkscape:window-height="1056"
      id="namedview4"
      showgrid="true"
-     inkscape:zoom="0.89001172"
-     inkscape:cx="-512.47014"
-     inkscape:cy="231.13252"
+     inkscape:zoom="0.15733333"
+     inkscape:cx="578.52896"
+     inkscape:cy="1518.0474"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
-     fit-margin-top="40"
-     fit-margin-left="40"
-     fit-margin-right="40"
-     fit-margin-bottom="40"
+     fit-margin-top="80"
+     fit-margin-left="80"
+     fit-margin-right="80"
+     fit-margin-bottom="80"
      showguides="false"><inkscape:grid
        type="xygrid"
        id="grid3748"
        spacingx="15.000001"
        spacingy="30"
-       originx="-193.52664"
-       originy="-492.87553" /></sodipodi:namedview><g
+       originx="192.91118"
+       originy="-123.92156" /></sodipodi:namedview><g
      inkscape:groupmode="layer"
      id="layer1"
      inkscape:label="title"
      style="display:inline"
-     transform="translate(-743.08547,-180.27214)"><text
+     transform="translate(-356.64768,188.68183)"><text
    transform="scale(0.94703571,1.0559264)"
-   style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.12587357px;line-height:0%;font-family:Times;-inkscape-font-specification:Times-Roman;writing-mode:lr-tb;display:inline;fill:#0077bf;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.92715615"
+   style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20.25990295px;line-height:0%;font-family:Times;-inkscape-font-specification:Times-Roman;writing-mode:lr-tb;display:inline;fill:#0077bf;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.68832541"
    id="text24"
-   x="811.84833"
-   y="964.9668"><tspan
-     x="811.84833"
+   x="433.69443"
+   y="1274.387"><tspan
+     x="433.69443"
      sodipodi:role="line"
      id="tspan28"
-     y="964.9668"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:197.79330444px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#0077bf;fill-opacity:1;stroke-width:0.92715615">LOREMIZE</tspan></text>
+     y="1274.387"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:360.17605591px;line-height:1.25;font-family:'URW Gothic L';-inkscape-font-specification:'URW Gothic L';fill:#0077bf;fill-opacity:1;stroke-width:1.68832541">LOREMIZE</tspan></text>
+
 
 
 
@@ -81,7 +82,7 @@
 
 <g
    id="g4603"
-   transform="matrix(1.1833883,0,0,1.1833883,902.12302,220.27214)"><path
+   transform="matrix(2.1549169,0,0,2.1549169,653.4117,-108.68183)"><path
      id="path4521"
      d="M 286,184 H 70 c -33.137,0 -60,26.863 -60,60 v 154 c 0,33.137 26.863,60 60,60 h 64.979 l -0.901,0.078 L 178,502 178.031,458 H 286 c 33.137,0 60,-26.863 60,-60 V 244 c 0,-33.137 -26.863,-60 -60,-60 z"
      style="fill:#c7eaff"
