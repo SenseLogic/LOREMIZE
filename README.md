@@ -6,7 +6,7 @@ Placeholder text generator.
 
 ## Description
 
-Loremize interactively converts English texts into Klingon-like placeholder texts.
+Loremize interactively converts English texts into Romanian-like placeholder texts.
 
 ## Sample
 
@@ -26,18 +26,18 @@ Nexus-6 replicants: Roy Batty, Zhora, and Pris.
 ```
 Result:
 ```
-Am 2019 Rud Omcirid, vulnil buragi uvvagil Lagh Tigholt ad tisoamit
-pe uvvagil Covv, omt pluycks su kad vulnil dybilwadul, Pleoms.
-Tigholt, fkudi zup od o "proti lymmil" fod su slogh tufm
-pauimcamiilit piamcd hmufm od libragomsd omt "lisali" (harr) skin,
-ad amvulnit skos vuyl oli um Iolsk arricorre. Tigholt dsolsd su
-riowi, pys Pleoms onpacyuydre skliosimd kan, omt ki dsoed. Ski sfu
-fosgk o watiu uv o proti lymmil monit Kurtim otnamadsilamc ski
-"Wuacs-Honbvv" sids, fkagk ad tidacmit su tadsamcyadk libragomsd
-vlun kynomd podit um skial inusaumor lidbumdi su xyidsaumd. Ski
-sids dypzigs, Rium, dkuusd Kurtim um ski digumt xyidsaum. Pleoms
-fomsd Tigholt su lisali Rium omt ski uskil sklii Selirr Gulbulosaum
-Miqyd-6 libragomsd: Lue Posse, Jkulo, omt Blad.
+Un 2019 Led Oncalad, vermar beluga evvugar Rugk Tagkort ud tasounat
+pi evvugar Covv, ont preychs se hud vermar dybarwuder, Prions.
+Tagkort, fheda zep od o "plota rynnar" fod se srogk tefn
+pueancunaarat pauncd knefn od rablugonsd ont "rasura" (kull) sham,
+ud unvermat shos veyr ora en Aorsh ullacolli. Tagkort dsorsd se
+laowa, pys Prions ompucyeydli shraosand hum, ont ha dsoid. Sha sfe
+fosgh o wutae ev o plota rynnar nomat Heltan otmunudsarunc sha
+"Weucs-Kombvv" sads, fhugh ud taducnat se tudsuncyudh rablugonsd
+vrem hymond podat en shaur amesuenol radbenda se xyadsuend. Sha
+sads dypzags, Laen, dheesd Heltan en sha dagent xyadsuen. Prions
+fonsd Tagkort se rasura Laen ont sha eshar shraa Sirall Gerberosuen
+Naqyd-6 rablugonsd: Rei Possi, Jhero, ont Brud.
 ```
 
 ## Version
