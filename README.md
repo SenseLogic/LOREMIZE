@@ -12,7 +12,7 @@ Loremize interactively generates :
 
 ## Samples
 
-Base text:
+Existing text:
 ```
 In 2019 Los Angeles, former police officer Rick Deckard is detained
 by officer Gaff, and brought to his former supervisor, Bryant.
