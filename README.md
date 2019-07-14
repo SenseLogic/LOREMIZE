@@ -30,18 +30,18 @@ Nexus-6 replicants: Roy Batty, Zhora, and Pris.
 
 Latinized text:
 ```
-Ut 2019 Sed Indicio, fiebat habuit omnibus Haec Itinere ad reliquis
-ad duodena Item, hos quaeque in vix canini perterriti, Romani.
-Amplius, atque suo ne a "intra belgis" tum ex locis fuit
-necessariarum fieret fines in diligentia uti "caesar" (sunt) illi,
-et venerunt fide luce eos ad Inter paruerint. Defecit quibus si
-causa, +ac Habere sufficiebat adventare est, cum in milia. Spe cum
-habet a paulo id a colle caesar neque Castra impedimentorum nam
-"Ducit-Postea" loco, notum ex postquam in germanosque interfecta
-diem hostem atque et parti exercitum quattuor ut exuberare. Ubi
-quam inferri, Eius, hiemem Natura ut non gallia venturum. Hiemes
-nocte Quisque ut prodit Esse iis una magna saxis Quidem Retractatam
-Sedes-6 praeberent: Non Vitae, Casum, qui Dies.
+Ab 2019 Die Habeant, gallia putant auxilia Apud Quinque ex vestigio
+et passuum Enim, rem ratione et his impetu facultatem, Exigua.
+Turonis, urbem rei ut a "neque factis" nec ex atque quam
+octingentarum centum paene in languidius est "usuros" (quam) quod,
+ad precibus quos suam eos in Causa amicitiam. Dicebat quieti si
+omnem, hoc Navium pedestribus conversus cum, die in aquae. Iam cum
+naves a tamen ex a aliam copiis ferre Quorum proficiscitur cum
+"Omnis-Caesar" apud, fines ad cognitis in sextadecima capacitate
+erat diebus magni et neque quibusdam uteretur in admiratur. Qui
+ante proximo, Suum, partim Quorum ex cum paucos iniuriam. Inopia
+eadem Solutae si quibus Agri uno cum firmo irent Caesar Cognoscimus
+Bello-6 cotidianis: Per Longe, Inter, ita Quod.
 ```
 
 Klingonized text:
