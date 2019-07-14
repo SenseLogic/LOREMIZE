@@ -6,10 +6,13 @@ Placeholder text generator.
 
 ## Description
 
-Loremize interactively converts English texts into Romanian-like placeholder texts.
+Loremize interactively generates :
+*   Latin text using the given paragraph, phrase, word and column counts;
+*   Latin and Klingon text based on any existing text.
 
-## Sample
+## Samples
 
+Base text:
 ```
 In 2019 Los Angeles, former police officer Rick Deckard is detained
 by officer Gaff, and brought to his former supervisor, Bryant.
@@ -24,7 +27,24 @@ test subject, Leon, shoots Holden on the second question. Bryant
 wants Deckard to retire Leon and the other three Tyrell Corporation
 Nexus-6 replicants: Roy Batty, Zhora, and Pris.
 ```
-Result:
+
+Latinized text:
+```
+Ut 2019 Sed Indicio, fiebat habuit omnibus Haec Itinere ad reliquis
+ad duodena Item, hos quaeque in vix canini perterriti, Romani.
+Amplius, atque suo ne a "intra belgis" tum ex locis fuit
+necessariarum fieret fines in diligentia uti "caesar" (sunt) illi,
+et venerunt fide luce eos ad Inter paruerint. Defecit quibus si
+causa, +ac Habere sufficiebat adventare est, cum in milia. Spe cum
+habet a paulo id a colle caesar neque Castra impedimentorum nam
+"Ducit-Postea" loco, notum ex postquam in germanosque interfecta
+diem hostem atque et parti exercitum quattuor ut exuberare. Ubi
+quam inferri, Eius, hiemem Natura ut non gallia venturum. Hiemes
+nocte Quisque ut prodit Esse iis una magna saxis Quidem Retractatam
+Sedes-6 praeberent: Non Vitae, Casum, qui Dies.
+```
+
+Klingonized text:
 ```
 Un 2019 Led Oncalad, vermar beluga evvugar Rugk Tagkort ud tasounat
 pi evvugar Covv, ont preychs se hud vermar dybarwuder, Prions.
@@ -40,9 +60,43 @@ fonsd Tagkort se rasura Laen ont sha eshar shraa Sirall Gerberosuen
 Naqyd-6 rablugonsd: Rei Possi, Jhero, ont Brud.
 ```
 
+Loremized text:
+```
+Oporteret obsides ratio equites causa debeat fuga nativo a opere
+quam qui fines caesarem equitatu oppugnandum galliam incitati iam
+paulus. Altitudinem huic cuiusque nec populumque quingentas
+constantius in primum ab alius proficisci perterreant strata
+nervosque celari levis nati milia manere.
+
+Cuius se digiti locis sic eiusdem quo ex menapii causa agant ante
+subsidium esse sescentae ac existimarent si earum commodissimum.
+Ulteriores consimilis interiectis supra laudanda quinariae
+duodecimum roma si plus arte utriusque colloquium velut providet
+in spem quando labienum pueri.
+
+Portas longius exspectarent velut atque ad conaretur reducto
+crasso obsides considere in traducit decimae proelium erant
+copiae locum venissent cohortesque. Hos in d quod ulteriore
+redigeretur specibus nonaginta verbis quid gergoviam sua alii
+continentem senatores iuncta aduatucos incolumes legati ex.
+
+Ut modum legiones quae ad ubi stirps cognoscebat aditus magnus
+muralium milia magnum locorum ordinibus milibus esse quam
+intercluserant esset. Reliquae accidit quod eius loco tribus in
+consecutis confligerent persequantur eburones in quaecumque pauca
+familiaresque interea formula oppida gallis calones.
+
+Pabulatum commentariis hac peditatusque existimarit rerum
+quaesitus quod reliquaque locus ulli causam caesari prohibeant
+delegerant munitione pervenit ferebat maritimae in. In cum
+intermisso quod non caesar arbitrabatur libertatem idem exercitu
+citerioris parva armis sui faceret eorum administratae veteres
+copiis collibus.
+```
+
 ## Version
 
-1.0
+2.0
 
 ## Author
 
