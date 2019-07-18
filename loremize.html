@@ -35,6 +35,8 @@
     </tbody>
 </table>
 <script>
+    // -- CONSTANTS
+
     const LatinWordTable =
         (
             "cum omnis res ab imperatore delegata intentiorem exigat "
@@ -6957,12 +6959,47 @@
             + "contendit "
         ).split( " " );
 
+    // -- VARIABLES
+
+    var
+        PriorLatinWordArray = [];
+
+    // ~~
+
+    function AddPriorLatinWord(
+        prior_latin_word
+        )
+    {
+        PriorLatinWordArray.push( prior_latin_word );
+
+        if ( PriorLatinWordArray.length > 10 )
+        {
+            PriorLatinWordArray.shift();
+        }
+    }
+
     // ~~
 
     function GetRandomLatinWord(
         )
     {
-        return LatinWordTable[ Math.floor( Math.random() * LatinWordTable.length ) ];
+        var
+            latin_word,
+            pick_index;
+
+        for ( pick_index = 0;
+              pick_index < 100;
+              ++pick_index )
+        {
+            latin_word = LatinWordTable[ Math.floor( Math.random() * LatinWordTable.length ) ];
+
+            if ( PriorLatinWordArray.indexOf( latin_word ) < 0 )
+            {
+                break;
+            }
+        }
+
+        return latin_word;
     }
 
     // ~~
@@ -7010,6 +7047,8 @@
                     }
                 }
             }
+
+            AddPriorLatinWord( latin_word );
 
             word_character_array = word.split( "" );
             latin_word_character_array = latin_word.split( "" );
@@ -7081,7 +7120,7 @@
             old_word,
             new_text;
 
-        old_text = GetFixedText( document.getElementById( "OldText" ).value );
+        old_text = GetFixedText( document.getElementById( "OldText" ).value ).split( "'" ).join( "" );
         old_word = "";
         new_text = "";
 
@@ -7190,6 +7229,8 @@
                       ++word_index )
                 {
                     latin_word = GetRandomLatinWord();
+
+                    AddPriorLatinWord( latin_word );
 
                     if ( word_index === 0 )
                     {
