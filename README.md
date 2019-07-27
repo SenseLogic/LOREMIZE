@@ -7,13 +7,14 @@ Placeholder text generator.
 ## Description
 
 Loremize interactively generates :
-*   Latin text from the given paragraph, phrase, word and column counts;
-*   Latin and Klingon text from an existing text.
+*   Latin text with specific paragraph, phrase, word and column counts;
+*   Latin and Klingon text from existing plain/HTML texts.
 
 ## Samples
 
 Existing text:
-```
+```html
+<div class="container-fluid">
 In 2019 Los Angeles, former police officer Rick Deckard is detained
 by officer Gaff, and brought to his former supervisor, Bryant.
 Deckard, whose job as a "blade runner" was to track down
@@ -26,72 +27,76 @@ from humans based on their emotional response to questions. The
 test subject, Leon, shoots Holden on the second question. Bryant
 wants Deckard to retire Leon and the other three Tyrell Corporation
 Nexus-6 replicants: Roy Batty, Zhora, and Pris.
+</div>
 ```
 
 Latinized text:
-```
-Ex 2019 Est Quoniam, ipsius potest maneret Quod Oppidum ob gallicis
-in maneret Erat, qui corpore et rem ipsius ambiorigem, Partem.
-Oppidum, usque aut de o "milia primum" eum et magis sunt
-defensoribus oppida arcus de paucitatem qui "curtio" (ipso) opus,
-ob perpauci quam alio his ut Parte accurrunt. Oppidum habere et
-rivum, hac Partem civitatibus sexcentae non, qui et solum. Qua qui
-medio o facta is o milia primum pedes Postea fullonicarum qua
-"Erant-Paucis" esse, posse ob fecerunt et interposita paucitatem
-anio parare solis ut vires exercitus statuito et civitates. Qua
-esse italiae, Haec, fuerat Postea ut qua posset acerrime. Partem
-neque Oppidum et curtio Haec qui qua atque esset Quorum Sacrificiis
-Rebus-6 paucitatem: His Etiam, Locis, qui Tuto.
+```html
+<div class="container-fluid">
+Ad 2019 Est Sedecim, innata quibus imperat Quam Tumulus et ducentis
+se imperat Loci, cum haeduos ex ita innata erogaverit, Inveni.
+Tumulus, habet qui ne o "neque itaque" iam ex hoste eius
+constituerat copias minus ne salientium cum "primos" (sunt) quod,
+et frequens prae sese qui et Milia paulisper. Tumulus facere ex
+primi, hoc Inveni commemorant civitatum cum, cum ad alias. Hac res
+natus o novus et o neque itaque signo Gallia voluntariorum hac
+"Neque-Insula" diem, nomen et oppidani ex compluribus salientium
+quod belgas esset et magno oppressis caeruleo ex civitatum. Hac
+diem legatis, Sumi, silvis Gallia et hac ferret hostibus. Inveni
+fisco Tumulus ex primos Sumi cum hac nobis illum Duarum Sustinerent
+Naves-6 salientium: Non Ipsis, Nomen, cum Quam.
+</div>
 ```
 
 Klingonized text:
-```
-Un 2019 Led Oncalad, vermar beluga evvugar Rugk Tagkort ud tasounat
-pi evvugar Covv, ont preychs se hud vermar dybarwuder, Prions.
-Tagkort, fheda zep od o "plota rynnar" fod se srogk tefn
-pueancunaarat pauncd knefn od rablugonsd ont "rasura" (kull) sham,
-ud unvermat shos veyr ora en Aorsh ullacolli. Tagkort dsorsd se
-laowa, pys Prions ompucyeydli shraosand hum, ont ha dsoid. Sha sfe
-fosgh o wutae ev o plota rynnar nomat Heltan otmunudsarunc sha
-"Weucs-Kombvv" sads, fhugh ud taducnat se tudsuncyudh rablugonsd
-vrem hymond podat en shaur amesuenol radbenda se xyadsuend. Sha
-sads dypzags, Laen, dheesd Heltan en sha dagent xyadsuen. Prions
-fonsd Tagkort se rasura Laen ont sha eshar shraa Sirall Gerberosuen
-Naqyd-6 rablugonsd: Rei Possi, Jhero, ont Brud.
+```html
+<div class="container-fluid">
+Un 2019 Xyu Lencuyd, opdyns matuym godsrud Tyod Brebuyd da versynud
+ao godsrud Ullu, dat ysrexya un gym opdyns daxyonerym, Teleru.
+Brebuyd, sruym ram da e "mocud lacosu" nen un boced ullu
+brevugudgumyr xyupyd dumyl da porporerym dat "rhanym" (xyoa) dyud,
+da broadutu xyud xyod hoa op Othyg barvarsyr. Brebuyd gebuud un
+blana, gym Teleru aqudsumopos batusupyd heg, dat un oxyoa. Ypu wum
+gesso e ubdud da e mocud lacosu bramu Wasarm gengusowaryns ypu
+"Legud-Oatyed" xyoa, ormud da gentusoa un genlegorans porporerym
+tuad obarso blano op goydo mylsusyte epluxyud un tudgatara. Ypu
+xyoa oxyorym, Vere, bembau Wasarm op ypu borsam atyqaros. Teleru
+myrym Brebuyd un rhanym Vere dat ypu rosue vycoa Sumera Unsaruaryns
+Sesoa-6 porporerym: Uom Ogsym, Varra, dat Xyom.
+</div>
 ```
 
 Loremized text:
 ```
-Id iuvarent ambiorix maxime proximis aedificia ad creatus quinque
-simul milites versabantur matre legiones legionem facto
-circumveniri ex rivorum cultas. Pronior vercingetorige labienus
-acceperunt locis suis arduus egredi exercitus qui aeduorum dicunt
-in ut quae ex magno aut nihil cadurcis.
+Latrocinio eo legionum neu multi ab inertia ea dimisso paruerunt
+est in cum facturos manebunt castra parte navibus sua etiam. Eo
+se ut tribuit dimissis ad causa labori adgressi animo militaria
+quanta eundemque maiorem aberant immisso hoc proprio per
+reportare.
 
-Caesaris pro resistens lumen et sponte helvetiorum diem montem
-namnetes exploratoresque pons fecerunt quinariae labienus cum
-praeturae malo poterant amicus. Ac ibi rebus clamorem re
-cognoscit rationi tradere tribusque consilio gallia esset fontes
-de pervenit remissi diebus ubi castris omnium.
+Haeduo fuerunt gallia indutiomarus civitas sit omnibus traditas
+imperat ad id et quod belli est neque oppido permiserunt ex
+multitudo. Tantum viginti curatoribus cotidie saepius eos
+menapios importari sine mosa habere romanorum et omni in
+incitavisset virtute finem recipitur esset.
 
-Adiunxerant veteris deinde tenebat administrari oppugnatione
-diversitas subsidia neque duas caelii numerum defenderet antonium
-quas quo vitandi beneficio parte recuperare. Plures ut sed
-sinistro paemanos agmine sexaginta rex passuum relinquunt ne
-acceptis aliter equitatum architectis commentariis ex eos a
-terram.
+Omnino haberent reliquis se ex cum distribuit quae qui piscinam
+eandemque extra homines nolebat totius generibus longiore
+frumento propter anione. Belli conspectu ex ad finitimi cum
+dederunt sed suos geratur quod dixerit in caninius non ad et eos
+amicos munire.
 
-Prohibentibus perduceret habet frumentariae existimabat magna ab
-recipiunt hoc ne imperat victis ante publicae laetitia quod non
-britanniae venturum arcuatum. Galliam facilius itaque adventu
-milia super navium ipsis incendit permulsis confecto relictis
-flumine neque imperatum iubebat cuiusque ac vis privatim.
+Provinciae mana­tionibus cornibus reverti quam tela ne interisse
+verum unum non et eodem omnes germanos ac gallicum proelio qui
+mandatis. Amplificata adquisitionem erat vehementer modum
+mutandis deferrent ne marte nonnulli commodo die auctoritas re
+consilium bellum quoniam suetonio civibus mortis.
 
-Quidem rei quae qui impetus egredi huius impedimenta ad et
-perducerentur equites propinquum ut inter fine interim tenuit
-vastatis diligentissima. Videbant oppidi maximi passuum suos
-togatae suis nolebat et existimaverunt ex certus constantiam et
-redactus gallia partibus qui vento fremitusque.
+Ariovistus nuntio id iam hostem esse bello cum destitit aestu
+consisteret commium aquarum nihil firmitudo spatio arboribus
+haeduis in copiae. Senatusque ubi campum scripserunt est reliqui
+praeacutis facturos consolatus pabulationibus creari praeusta
+introire superiores se traductos liberos gerendam quam scaphas.
 ```
 
 ## Version

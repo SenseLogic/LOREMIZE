@@ -10,27 +10,54 @@
     {
         border-collapse : collapse;
     }
+
+    .text-row
+    {
+        font-size : 0.5rem;
+    }
+
+    .text-row textarea
+    {
+        width : 49vw;
+        height : 95vh;
+    }
+
+    .bar-row, .bar-row *
+    {
+        font-size : 0.8vw;
+    }
+
+    .text-input
+    {
+        width : 3vw;
+    }
 </style>
 <table>
     <tbody>
-        <tr>
+        <tr class="text-row">
             <td>
-                <textarea id="OldText" style="width:49vw;height:95vh"></textarea>
+                <textarea id="OldText"></textarea>
             </td>
             <td>
-                <textarea id="NewText" style="width:49vw;height:95vh"></textarea>
+                <textarea id="NewText"></textarea>
             </td>
         </tr>
-        <tr>
-            <td colspan="2">
-                <button onclick="Loremize()" style="font-size:2vh">Loremize</button>
-                <input id="ParagraphCount" type="text" placeholder="Paragraphs" value="5" style="width:14vw;font-size:2vh"\>
-                <input id="PhraseCount" type="text" placeholder="Phrases" value="2" style="width:14vw;font-size:2vh"\>
-                <input id="WordCount" type="text" placeholder="Words" value="20" style="width:14vw;font-size:2vh"\>
-                <input id="ColumnCount" type="text" placeholder="Columns" value="65" style="width:14vw;font-size:2vh;margin-right:1vh"\>|
-                <button onclick="Latinize()" style="font-size:2vh">Latinize</button>
-                <button onclick="Klingonize()" style="font-size:2vh">Klingonize</button>
-                <input id="IsHtml" type="checkbox"><span style="font-size:2vh">HTML</span>
+        <tr class="bar-row">
+            <td>
+                <button onclick="Loremize()">Loremize</button>
+                Paragraphs:
+                <input id="ParagraphCount" class="text-input" type="text" value="5"/>
+                Phrases:
+                <input id="PhraseCount" class="text-input" type="text" value="2"/>
+                Words:
+                <input id="WordCount" class="text-input" type="text" value="20"/>
+                Columns:
+                <input id="ColumnCount" class="text-input" type="text" value="65"/>
+            </td>
+            <td>
+                <button onclick="Latinize()">Latinize</button>
+                <button onclick="Klingonize()">Klingonize</button>
+                <input id="IsHtml" type="checkbox">HTML
             </td>
         </tr>
     </tbody>
