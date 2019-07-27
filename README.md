@@ -8,7 +8,7 @@ Placeholder text generator.
 
 Loremize interactively generates :
 *   Latin text with specific paragraph, phrase, word and column counts;
-*   Latin and Klingon text from existing plain/HTML texts.
+*   Latin and Klingon text from an existing text.
 
 ## Samples
 
