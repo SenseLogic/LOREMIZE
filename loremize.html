@@ -27,10 +27,10 @@
                 <input id="ParagraphCount" type="text" placeholder="Paragraphs" value="5" style="width:14vw;font-size:2vh"\>
                 <input id="PhraseCount" type="text" placeholder="Phrases" value="2" style="width:14vw;font-size:2vh"\>
                 <input id="WordCount" type="text" placeholder="Words" value="20" style="width:14vw;font-size:2vh"\>
-                <input id="ColumnCount" type="text" placeholder="Columns" value="65" style="width:14vw;font-size:2vh"\>&nbsp;|
+                <input id="ColumnCount" type="text" placeholder="Columns" value="65" style="width:14vw;font-size:2vh;margin-right:1vh"\>|
                 <button onclick="Latinize()" style="font-size:2vh">Latinize</button>
-                <input id="Tagged" type="checkbox">tagged&nbsp;|
                 <button onclick="Klingonize()" style="font-size:2vh">Klingonize</button>
+                <input id="IsHtml" type="checkbox"><span style="font-size:2vh">HTML</span>
             </td>
         </tr>
     </tbody>
@@ -7162,106 +7162,6 @@
 
     // ~~
 
-    function Latinize(
-        )
-    {
-        var
-            accentuated_character_index,
-            old_character,
-            old_character_index,
-            old_text,
-            old_word,
-            new_text,
-            text_is_tagged;
-
-        LatinWordMap = new Map();
-
-        text_is_tagged = document.getElementById( "Tagged" ).checked;
-
-        old_text = GetFixedText( document.getElementById( "OldText" ).value ).split( "'" ).join( "" );
-        old_word = "";
-        new_text = "";
-
-        for ( old_character_index = 0;
-              old_character_index < old_text.length;
-              ++old_character_index )
-        {
-            old_character = old_text[ old_character_index ];
-
-            if ( ( old_character >= 'a' && old_character <= 'z' )
-                 || ( old_character >= 'A' && old_character <= 'Z' ) )
-            {
-                old_word += old_character;
-            }
-            else
-            {
-                new_text += GetLatinWord( old_word ) + old_character;
-                old_word = "";
-
-                if ( text_is_tagged
-                     && old_character === '<' )
-                {
-                    while ( old_character_index + 1 < old_text.length
-                            && old_text[ old_character_index + 1 ] !== '>' )
-                    {
-                        ++old_character_index;
-
-                        new_text += old_text[ old_character_index ];
-                    }
-                }
-            }
-        }
-
-        new_text += GetLatinWord( old_word );
-
-        document.getElementById( "NewText" ).value = new_text;
-    }
-
-    // ~~
-
-    function Klingonize(
-        )
-    {
-        var
-            old_character,
-            old_character_index,
-            old_letter_list_text,
-            old_text,
-            new_letter_list_text,
-            new_text;
-
-        old_text = GetFixedText( document.getElementById( "OldText" ).value );
-
-        old_letter_list_text = "aoe uiy lm rn sdt fvw cg xq hk pb jz";
-        new_letter_list_text = "oea yui lm rn dts vwf gc qx hk bp zj";
-
-        old_letter_list_text += " " + old_letter_list_text.toUpperCase();
-        new_letter_list_text += " " + new_letter_list_text.toUpperCase();
-
-        new_text = "";
-
-        for ( old_character_index = 0;
-              old_character_index < old_text.length;
-              ++old_character_index )
-        {
-            old_character = old_text[ old_character_index ];
-
-            if ( ( old_character >= 'a' && old_character <= 'z' )
-                 || ( old_character >= 'A' && old_character <= 'Z' ) )
-            {
-                new_text += new_letter_list_text[ old_letter_list_text.indexOf( old_character ) ];
-            }
-            else
-            {
-                new_text += old_character;
-            }
-        }
-
-        document.getElementById( "NewText" ).value = new_text;
-    }
-
-    // ~~
-
     function Loremize(
         )
     {
@@ -7336,6 +7236,146 @@
 
         document.getElementById( "OldText" ).value = text;
         document.getElementById( "NewText" ).value = "";
+    }
+
+    // ~~
+
+    function Latinize(
+        )
+    {
+        var
+            accentuated_character_index,
+            old_character,
+            old_character_index,
+            old_text,
+            old_text_is_html,
+            old_word,
+            new_text;
+
+        LatinWordMap = new Map();
+
+        old_text_is_html = document.getElementById( "IsHtml" ).checked;
+
+        old_text = GetFixedText( document.getElementById( "OldText" ).value ).split( "'" ).join( "" );
+        old_word = "";
+        new_text = "";
+
+        for ( old_character_index = 0;
+              old_character_index < old_text.length;
+              ++old_character_index )
+        {
+            old_character = old_text[ old_character_index ];
+
+            if ( ( old_character >= 'a' && old_character <= 'z' )
+                 || ( old_character >= 'A' && old_character <= 'Z' ) )
+            {
+                old_word += old_character;
+            }
+            else
+            {
+                new_text += GetLatinWord( old_word ) + old_character;
+                old_word = "";
+
+                if ( old_text_is_html )
+                {
+                    if ( old_character === '<' )
+                    {
+                        while ( old_character_index + 1 < old_text.length
+                                && old_text[ old_character_index + 1 ] !== '>' )
+                        {
+                            ++old_character_index;
+
+                            new_text += old_text[ old_character_index ];
+                        }
+                    }
+                    else if ( old_character === '&' )
+                    {
+                        while ( old_character_index + 1 < old_text.length
+                                && old_text[ old_character_index + 1 ] !== ';' )
+                        {
+                            ++old_character_index;
+
+                            new_text += old_text[ old_character_index ];
+                        }
+                    }
+                }
+            }
+        }
+
+        new_text += GetLatinWord( old_word );
+
+        document.getElementById( "NewText" ).value = new_text;
+    }
+
+    // ~~
+
+    function Klingonize(
+        )
+    {
+        var
+            old_character,
+            old_character_index,
+            old_letter_list_text,
+            old_text,
+            old_text_is_html,
+            new_letter_list_text,
+            new_text;
+
+        Latinize();
+
+        old_text_is_html = document.getElementById( "IsHtml" ).checked;
+        old_text = document.getElementById( "NewText" ).value;
+
+        old_letter_list_text = "aoe uiy lm rn sdt fvw cg xq hk pb jz";
+        new_letter_list_text = "oea yui lm rn dts vwf gc qx hk bp zj";
+
+        old_letter_list_text += " " + old_letter_list_text.toUpperCase();
+        new_letter_list_text += " " + new_letter_list_text.toUpperCase();
+
+        new_text = "";
+
+        for ( old_character_index = 0;
+              old_character_index < old_text.length;
+              ++old_character_index )
+        {
+            old_character = old_text[ old_character_index ];
+
+            if ( ( old_character >= 'a' && old_character <= 'z' )
+                 || ( old_character >= 'A' && old_character <= 'Z' ) )
+            {
+                new_text += new_letter_list_text[ old_letter_list_text.indexOf( old_character ) ];
+            }
+            else
+            {
+                new_text += old_character;
+
+                if ( old_text_is_html )
+                {
+                    if ( old_character === '<' )
+                    {
+                        while ( old_character_index + 1 < old_text.length
+                                && old_text[ old_character_index + 1 ] !== '>' )
+                        {
+                            ++old_character_index;
+
+                            new_text += old_text[ old_character_index ];
+                        }
+                    }
+                    else if ( old_character === '&' )
+                    {
+                        while ( old_character_index + 1 < old_text.length
+                                && old_text[ old_character_index + 1 ] !== ';' )
+                        {
+                            ++old_character_index;
+
+                            new_text += old_text[ old_character_index ];
+                        }
+                    }
+                }
+            }
+        }
+
+        document.getElementById( "NewText" ).value = new_text;
     }
 
     // -- STATEMENTS
