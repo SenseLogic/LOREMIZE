@@ -7157,14 +7157,93 @@
     // ~~
 
     function GetFixedText(
-        text
+        text,
+        text_is_html
         )
     {
         var
-            accentuated_character_index,
+            accented_character_array,
+            accented_character_index,
             character,
             character_index,
             fixed_text;
+
+        accented_character_array
+            = ( "À &Agrave; A "
+                + "Á &Aacute; A "
+                + "Â &Acirc; A "
+                + "Ã &Atilde; A "
+                + "Ä &Auml; A "
+                + "Å &Aring; A "
+                + "Æ &AElig; A "
+                + "Ç &Ccedil; C "
+                + "È &Egrave; E "
+                + "É &Eacute; E "
+                + "Ê &Ecirc; E "
+                + "Ë &Euml; E "
+                + "Ì &Igrave; I "
+                + "Í &Iacute; I "
+                + "Î &Icirc; I "
+                + "Ï &Iuml; I "
+                + "Ð &ETH; D "
+                + "Ñ &Ntilde; N "
+                + "Ò &Ograve; O "
+                + "Ó &Oacute; O "
+                + "Ô &Ocirc; O "
+                + "Õ &Otilde; O "
+                + "Ö &Ouml; O "
+                + "Ø &Oslash; O "
+                + "Ù &Ugrave; U "
+                + "Ú &Uacute; U "
+                + "Û &Ucirc; U "
+                + "Ü &Uuml; U "
+                + "Ý &Yacute; Y "
+                + "Þ &THORN; D "
+                + "ß &szlig; s "
+                + "à &agrave; a "
+                + "á &aacute; a "
+                + "â &acirc; a "
+                + "ã &atilde; a "
+                + "ä &auml; a "
+                + "å &aring; a "
+                + "æ &aelig; a "
+                + "ç &ccedil; c "
+                + "è &egrave; e "
+                + "é &eacute; e "
+                + "ê &ecirc; e "
+                + "ë &euml; e "
+                + "ì &igrave; i "
+                + "í &iacute; i "
+                + "î &icirc; i "
+                + "ï &iuml; i "
+                + "ð &eth; o "
+                + "ñ &ntilde; n "
+                + "ò &ograve; o "
+                + "ó &oacute; o "
+                + "ô &ocirc; o "
+                + "õ &otilde; o "
+                + "ö &ouml; o "
+                + "ø &oslash; o "
+                + "ù &ugrave; u "
+                + "ú &uacute; u "
+                + "û &ucirc; u "
+                + "ü &uuml; u "
+                + "ý &yacute; y "
+                + "þ &thorn; t "
+                + "ÿ &yuml; y" ).split( ' ' );
+
+        if ( text_is_html )
+        {
+            for ( accented_character_index = 1;
+                  accented_character_index < accented_character_array.length;
+                  accented_character_index += 3 )
+            {
+                text
+                    = text
+                          .split( accented_character_array[ accented_character_index ] )
+                          .join( accented_character_array[ accented_character_index + 1 ] );
+            }
+        }
 
         fixed_text = "";
 
@@ -7174,14 +7253,44 @@
         {
             character = text[ character_index ];
 
-            accentuated_character_index = "ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝàáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ".indexOf( character );
-
-            if ( accentuated_character_index >= 0 )
+            for ( accented_character_index = 0;
+                  accented_character_index < accented_character_array.length;
+                  accented_character_index += 3 )
             {
-                character = "AAAAAAACEEEEIIIIDNOOOOOOUUUUYaaaaaaaceeeeiiiionoooooouuuuyy"[ accentuated_character_index ];
+                if ( character == accented_character_array[ accented_character_index ] )
+                {
+                    character = accented_character_array[ accented_character_index + 2 ];
+
+                    break;
+                }
             }
 
-            fixed_text += character;
+            if ( character === '\'' )
+            {
+                if ( character_index + 1 < text.length )
+                {
+                    text
+                        = text.substring( 0, character_index + 1 )
+                          + text.substring( character_index + 1, character_index + 2 ).toLowerCase()
+                          + text.substring( character_index + 2 );
+                }
+            }
+            else
+            {
+                fixed_text += character;
+            }
+
+            if ( text_is_html
+                 && character === '<' )
+            {
+                while ( character_index + 1 < text.length
+                        && text[ character_index + 1 ] !== '>' )
+                {
+                    ++character_index;
+
+                    fixed_text += text[ character_index ];
+                }
+            }
         }
 
         return fixed_text;
@@ -7271,7 +7380,6 @@
         )
     {
         var
-            accentuated_character_index,
             old_character,
             old_character_index,
             old_text,
@@ -7283,7 +7391,7 @@
 
         old_text_is_html = document.getElementById( "IsHtml" ).checked;
 
-        old_text = GetFixedText( document.getElementById( "OldText" ).value ).split( "'" ).join( "" );
+        old_text = GetFixedText( document.getElementById( "OldText" ).value, old_text_is_html );
         old_word = "";
         new_text = "";
 

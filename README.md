@@ -14,9 +14,9 @@ Loremize interactively generates :
 
 Existing text:
 ```html
-<div class="container-fluid">
+<div class='container-fluid'>
 In 2019 Los Angeles, former police officer Rick Deckard is detained
-by officer Gaff, and brought to his former supervisor, Bryant.
+by officer O'Brian, and brought to his former supervisor, Bryant.
 Deckard, whose job as a "blade runner" was to track down
 bioengineered beings known as replicants and "retire" (kill) them,
 is informed that four are on Earth illegally. Deckard starts to
@@ -32,37 +32,37 @@ Nexus-6 replicants: Roy Batty, Zhora, and Pris.
 
 Latinized text:
 ```html
-<div class="container-fluid">
+<div class='container-fluid'>
 Ad 2019 Est Sedecim, innata quibus imperat Quam Tumulus et ducentis
-se imperat Loci, cum haeduos ex ita innata erogaverit, Inveni.
-Tumulus, habet qui ne o "neque itaque" iam ex hoste eius
-constituerat copias minus ne salientium cum "primos" (sunt) quod,
-et frequens prae sese qui et Milia paulisper. Tumulus facere ex
-primi, hoc Inveni commemorant civitatum cum, cum ad alias. Hac res
-natus o novus et o neque itaque signo Gallia voluntariorum hac
-"Neque-Insula" diem, nomen et oppidani ex compluribus salientium
-quod belgas esset et magno oppressis caeruleo ex civitatum. Hac
+se imperat Caesar, ita tollere ad eos innata erogaverit, Inveni.
+Tumulus, habet cum ab o "modum munire" non ad neque esse
+restinguendo quidem manus ab praecipuum ita "posset" (sunt) quod,
+et frequens prae sese qui et Milia paulisper. Tumulus facere ad
+primi, hoc Inveni commemorant civitatum cum, ita ad alias. Hac res
+natus o novus et o modum munire signo Gallia voluntariorum hac
+"Neque-Insula" diem, nomen et oppidani ad compluribus praecipuum
+quod belgas esset et magno oppressis caeruleo ad civitatum. Hac
 diem legatis, Sumi, silvis Gallia et hac ferret hostibus. Inveni
-fisco Tumulus ex primos Sumi cum hac nobis illum Duarum Sustinerent
-Naves-6 salientium: Non Ipsis, Nomen, cum Quam.
+fisco Tumulus ad posset Sumi ita hac nobis illum Duarum Sustinerent
+Naves-6 praecipuum: Non Ipsis, Nomen, ita Quam.
 </div>
 ```
 
 Vulcanized text:
 ```html
-<div class="container-fluid">
+<div class='container-fluid'>
 Un 2019 Xyu Lencuyd, opdyns matuym godsrud Tyod Brebuyd da versynud
-ao godsrud Ullu, dat ysrexya un gym opdyns daxyonerym, Teleru.
-Brebuyd, sruym ram da e "mocud lacosu" nen un boced ullu
-brevugudgumyr xyupyd dumyl da porporerym dat "rhanym" (xyoa) dyud,
-da broadutu xyud xyod hoa op Othyg barvarsyr. Brebuyd gebuud un
-blana, gym Teleru aqudsumopos batusupyd heg, dat un oxyoa. Ypu wum
+ao godsrud Gobara, dug umbaruu ae dat opdyns daxyonerym, Teleru.
+Brebuyd, sruym ram da e "mocud lacosu" nen ae boced ullu
+brevugudgumyr xyupyd dumyl da porporerym dug "rhanym" (xyoa) dyud,
+da broadutu xyud xyod hoa op Othyg barvarsyr. Brebuyd gebuud ae
+blana, gym Teleru aqudsumopos batusupyd heg, dug un oxyoa. Ypu wum
 gesso e ubdud da e mocud lacosu bramu Wasarm gengusowaryns ypu
-"Legud-Oatyed" xyoa, ormud da gentusoa un genlegorans porporerym
-tuad obarso blano op goydo mylsusyte epluxyud un tudgatara. Ypu
+"Legud-Oatyed" xyoa, ormud da gentusoa ae genlegorans porporerym
+tuad obarso blano op goydo mylsusyte epluxyud ae tudgatara. Ypu
 xyoa oxyorym, Vere, bembau Wasarm op ypu borsam atyqaros. Teleru
-myrym Brebuyd un rhanym Vere dat ypu rosue vycoa Sumera Unsaruaryns
-Sesoa-6 porporerym: Uom Ogsym, Varra, dat Xyom.
+myrym Brebuyd ae rhanym Vere dug ypu rosue vycoa Sumera Unsaruaryns
+Sesoa-6 porporerym: Uom Ogsym, Varra, dug Xyom.
 </div>
 ```
 
