@@ -8,7 +8,7 @@ Placeholder text generator.
 
 Loremize interactively generates :
 *   Latin text with specific paragraph, phrase, word and column counts;
-*   Latin and Klingon text from an existing text.
+*   Latin and Vulcan text from an existing text.
 
 ## Samples
 
@@ -48,7 +48,7 @@ Naves-6 salientium: Non Ipsis, Nomen, cum Quam.
 </div>
 ```
 
-Klingonized text:
+Vulcanized text:
 ```html
 <div class="container-fluid">
 Un 2019 Xyu Lencuyd, opdyns matuym godsrud Tyod Brebuyd da versynud
