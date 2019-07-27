@@ -6962,7 +6962,47 @@
     // -- VARIABLES
 
     var
+        GetRandomNatural;
+    var
         PriorLatinWordArray = [];
+    var
+        LatinWordMap;
+
+    // -- FUNCTIONS
+
+    function SetRandomSeeds(
+        a,
+        b,
+        c,
+        d
+        )
+    {
+        GetRandomNatural
+            = function()
+                {
+                    var
+                        t;
+
+                    a >>>= 0; b >>>= 0; c >>>= 0; d >>>= 0;
+                    t = ( a + b ) | 0;
+                    a = b ^ b >>> 9;
+                    b = c + ( c << 3 ) | 0;
+                    c = ( c << 21 | c >>> 11 );
+                    d = d + 1 | 0;
+                    t = t + d | 0;
+                    c = c + t | 0;
+
+                    return ( t >>> 0 );
+                }
+    }
+
+    // ~~
+
+    function GetRandomReal(
+        )
+    {
+        return GetRandomNatural() / 4294967296;
+    }
 
     // ~~
 
@@ -6991,7 +7031,7 @@
               pick_index < 100;
               ++pick_index )
         {
-            latin_word = LatinWordTable[ Math.floor( Math.random() * LatinWordTable.length ) ];
+            latin_word = LatinWordTable[ Math.floor( GetRandomReal() * LatinWordTable.length ) ];
 
             if ( PriorLatinWordArray.indexOf( latin_word ) < 0 )
             {
@@ -7012,6 +7052,7 @@
             character_index,
             latin_word,
             latin_word_character_array,
+            lower_case_word,
             pick_index,
             random_latin_word,
             word_character,
@@ -7029,26 +7070,37 @@
         }
         else
         {
-            latin_word = "";
+            lower_case_word = word.toLowerCase();
 
-            for ( pick_index = 0;
-                  pick_index < 100;
-                  ++pick_index )
+            if ( LatinWordMap.has( lower_case_word ) )
             {
-                random_latin_word = GetRandomLatinWord();
+                latin_word = LatinWordMap.get( lower_case_word );
+            }
+            else
+            {
+                latin_word = "";
 
-                if ( Math.abs( word.length - random_latin_word.length ) < Math.abs( word.length - latin_word.length ) )
+                for ( pick_index = 0;
+                      pick_index < 100;
+                      ++pick_index )
                 {
-                    latin_word = random_latin_word;
+                    random_latin_word = GetRandomLatinWord();
 
-                    if ( latin_word.length == word.length )
+                    if ( Math.abs( word.length - random_latin_word.length ) < Math.abs( word.length - latin_word.length ) )
                     {
-                        break;
+                        latin_word = random_latin_word;
+
+                        if ( latin_word.length == word.length )
+                        {
+                            break;
+                        }
                     }
                 }
-            }
 
-            AddPriorLatinWord( latin_word );
+                AddPriorLatinWord( latin_word );
+
+                LatinWordMap.set( lower_case_word, latin_word );
+            }
 
             word_character_array = word.split( "" );
             latin_word_character_array = latin_word.split( "" );
@@ -7119,6 +7171,8 @@
             old_text,
             old_word,
             new_text;
+
+        LatinWordMap = new Map();
 
         old_text = GetFixedText( document.getElementById( "OldText" ).value ).split( "'" ).join( "" );
         old_word = "";
@@ -7267,4 +7321,8 @@
         document.getElementById( "OldText" ).value = text;
         document.getElementById( "NewText" ).value = "";
     }
+
+    // -- STATEMENTS
+
+    SetRandomSeeds( 901161727, 942678731, 962084573, 965984691 );
 </script>

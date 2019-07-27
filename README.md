@@ -30,18 +30,18 @@ Nexus-6 replicants: Roy Batty, Zhora, and Pris.
 
 Latinized text:
 ```
-Ab 2019 Die Habeant, gallia putant auxilia Apud Quinque ex vestigio
-et passuum Enim, rem ratione et his impetu facultatem, Exigua.
-Turonis, urbem rei ut a "neque factis" nec ex atque quam
-octingentarum centum paene in languidius est "usuros" (quam) quod,
-ad precibus quos suam eos in Causa amicitiam. Dicebat quieti si
-omnem, hoc Navium pedestribus conversus cum, die in aquae. Iam cum
-naves a tamen ex a aliam copiis ferre Quorum proficiscitur cum
-"Omnis-Caesar" apud, fines ad cognitis in sextadecima capacitate
-erat diebus magni et neque quibusdam uteretur in admiratur. Qui
-ante proximo, Suum, partim Quorum ex cum paucos iniuriam. Inopia
-eadem Solutae si quibus Agri uno cum firmo irent Caesar Cognoscimus
-Bello-6 cotidianis: Per Longe, Inter, ita Quod.
+Ex 2019 Est Quoniam, ipsius potest maneret Quod Oppidum ob gallicis
+in maneret Erat, qui corpore et rem ipsius ambiorigem, Partem.
+Oppidum, usque aut de o "milia primum" eum et magis sunt
+defensoribus oppida arcus de paucitatem qui "curtio" (ipso) opus,
+ob perpauci quam alio his ut Parte accurrunt. Oppidum habere et
+rivum, hac Partem civitatibus sexcentae non, qui et solum. Qua qui
+medio o facta is o milia primum pedes Postea fullonicarum qua
+"Erant-Paucis" esse, posse ob fecerunt et interposita paucitatem
+anio parare solis ut vires exercitus statuito et civitates. Qua
+esse italiae, Haec, fuerat Postea ut qua posset acerrime. Partem
+neque Oppidum et curtio Haec qui qua atque esset Quorum Sacrificiis
+Rebus-6 paucitatem: His Etiam, Locis, qui Tuto.
 ```
 
 Klingonized text:
