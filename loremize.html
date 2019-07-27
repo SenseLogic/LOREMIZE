@@ -23,12 +23,13 @@
         </tr>
         <tr>
             <td colspan="2">
+                <button onclick="Loremize()" style="font-size:2vh">Loremize</button>
                 <input id="ParagraphCount" type="text" placeholder="Paragraphs" value="5" style="width:14vw;font-size:2vh"\>
                 <input id="PhraseCount" type="text" placeholder="Phrases" value="2" style="width:14vw;font-size:2vh"\>
                 <input id="WordCount" type="text" placeholder="Words" value="20" style="width:14vw;font-size:2vh"\>
-                <input id="ColumnCount" type="text" placeholder="Columns" value="65" style="width:14vw;font-size:2vh"\>
-                <button onclick="Loremize()" style="font-size:2vh">Loremize</button>
+                <input id="ColumnCount" type="text" placeholder="Columns" value="65" style="width:14vw;font-size:2vh"\>&nbsp;|
                 <button onclick="Latinize()" style="font-size:2vh">Latinize</button>
+                <input id="Tagged" type="checkbox">tagged&nbsp;|
                 <button onclick="Klingonize()" style="font-size:2vh">Klingonize</button>
             </td>
         </tr>
@@ -7170,9 +7171,12 @@
             old_character_index,
             old_text,
             old_word,
-            new_text;
+            new_text,
+            text_is_tagged;
 
         LatinWordMap = new Map();
+
+        text_is_tagged = document.getElementById( "Tagged" ).checked;
 
         old_text = GetFixedText( document.getElementById( "OldText" ).value ).split( "'" ).join( "" );
         old_word = "";
@@ -7193,6 +7197,18 @@
             {
                 new_text += GetLatinWord( old_word ) + old_character;
                 old_word = "";
+
+                if ( text_is_tagged
+                     && old_character === '<' )
+                {
+                    while ( old_character_index + 1 < old_text.length
+                            && old_text[ old_character_index + 1 ] !== '>' )
+                    {
+                        ++old_character_index;
+
+                        new_text += old_text[ old_character_index ];
+                    }
+                }
             }
         }
 
