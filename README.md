@@ -25,26 +25,26 @@ watch a video of a blade runner named Holden administering the
 "Voigt-Kampff" test, which is designed to distinguish replicants
 from humans based on their emotional response to questions. The
 test subject, Leon, shoots Holden on the second question. Bryant
-wants Deckard to retire Leon and the other three Tyrell Corporation
-Nexus-6 replicants: Roy Batty, Zhora, and Pris.
+wants Deckard to retire Leon and the other three Tyrell &amp; Co
+Nexus-6 replicants: Roy Batty, Zhôra, and Pr&yuml;s.
 </div>
 ```
 
 Latinized text:
 ```html
 <div class='container-fluid'>
-Ex 2019 Qui Ratibus, omnino multae ligerem Vale Praeter re subsequi
-ab ligerem Magnus, uti arbores et eum omnino britanniam, Cenabo.
-Praeter, inter cum ad o "autem romano" quo et alios quam
-interfecerunt certos erant ad oppugnatio uti "dubium" (fere) quod,
-re venisset quos omni nec ea Neque haberemus. Praeter partem et
-iubet, non Cenabo amicissimus prohibere sic, uti si fugam. Sua est
-minui o etiam ac o autem romano eodem Oppido proditionis sua
-"Pedes-Namque" quod, pugna re infestis et helvetiorum oppugnatio
-omni caesar capit ea paulo contrahit equitatu et magnopere. Sua
-quod homines, Quod, tertio Oppido ea sua capere fistulae. Cenabo
-eadem Praeter et dubium Quod uti sua rerum locum Hiemis Multitudine
-Esset-6 oppugnatio: Ibi Scire, Iubet, uti Unum.
+Ad 2019 Suo Reduxit, suebos caelio fuerunt Quid Fidelem ac rationem
+et fuerunt Vestro, per probata ex iam suebos adsignatus, Passus.
+Fidelem, causa quo ad o "gravi nullum" cum ex vites quod
+exactissimum primum omnes ad notissimis per "noctem" (post) quae,
+ac evocatis ipse quid non se Neque perspicio. Fidelem anione ex
+andos, ius Passus pollicitus exercitum qui, per ex magni. Cum iis
+maior o atque ad o gravi nullum usque Firmat corrumpuntur cum
+"Erant-Paulus" quod, sedes ac mensuras ex diligentius notissimis
+manu exuunt paene se magno audissent postquam ex victorias. Cum
+quod ratibus, Opus, capite Firmat se cum tertia transtra. Passus
+sequi Fidelem ex noctem Opus per cum paene modus Coepit &amp; In
+Fieri-6 notissimis: Uti Esset, Bella, per Fuit.
 </div>
 ```
 
@@ -61,7 +61,7 @@ gesso e ubdud da e mocud lacosu bramu Wasarm gengusowaryns ypu
 "Legud-Oatyed" xyoa, ormud da gentusoa ae genlegorans porporerym
 tuad obarso blano op goydo mylsusyte epluxyud ae tudgatara. Ypu
 xyoa oxyorym, Vere, bembau Wasarm op ypu borsam atyqaros. Teleru
-myrym Brebuyd ae rhanym Vere dug ypu rosue vycoa Sumera Unsaruaryns
+myrym Brebuyd ae rhanym Vere dug ypu rosue vycoa Sumera &amp; Ot
 Sesoa-6 porporerym: Uom Ogsym, Varra, dug Xyom.
 </div>
 ```

@@ -57,7 +57,7 @@
             <td>
                 <button onclick="Latinize()">Latinize</button>
                 <button onclick="Vulcanize()">Vulcanize</button>
-                <input id="IsHtml" type="checkbox">HTML
+                <input id="IsHtml" type="checkbox" checked>HTML
             </td>
         </tr>
     </tbody>
@@ -7169,68 +7169,70 @@
             fixed_text;
 
         accented_character_array
-            = ( "À &Agrave; A "
-                + "Á &Aacute; A "
-                + "Â &Acirc; A "
-                + "Ã &Atilde; A "
-                + "Ä &Auml; A "
-                + "Å &Aring; A "
-                + "Æ &AElig; A "
-                + "Ç &Ccedil; C "
-                + "È &Egrave; E "
-                + "É &Eacute; E "
-                + "Ê &Ecirc; E "
-                + "Ë &Euml; E "
-                + "Ì &Igrave; I "
-                + "Í &Iacute; I "
-                + "Î &Icirc; I "
-                + "Ï &Iuml; I "
-                + "Ð &ETH; D "
-                + "Ñ &Ntilde; N "
-                + "Ò &Ograve; O "
-                + "Ó &Oacute; O "
-                + "Ô &Ocirc; O "
-                + "Õ &Otilde; O "
-                + "Ö &Ouml; O "
-                + "Ø &Oslash; O "
-                + "Ù &Ugrave; U "
-                + "Ú &Uacute; U "
-                + "Û &Ucirc; U "
-                + "Ü &Uuml; U "
-                + "Ý &Yacute; Y "
-                + "Þ &THORN; D "
-                + "ß &szlig; s "
-                + "à &agrave; a "
-                + "á &aacute; a "
-                + "â &acirc; a "
-                + "ã &atilde; a "
-                + "ä &auml; a "
-                + "å &aring; a "
-                + "æ &aelig; a "
-                + "ç &ccedil; c "
-                + "è &egrave; e "
-                + "é &eacute; e "
-                + "ê &ecirc; e "
-                + "ë &euml; e "
-                + "ì &igrave; i "
-                + "í &iacute; i "
-                + "î &icirc; i "
-                + "ï &iuml; i "
-                + "ð &eth; o "
-                + "ñ &ntilde; n "
-                + "ò &ograve; o "
-                + "ó &oacute; o "
-                + "ô &ocirc; o "
-                + "õ &otilde; o "
-                + "ö &ouml; o "
-                + "ø &oslash; o "
-                + "ù &ugrave; u "
-                + "ú &uacute; u "
-                + "û &ucirc; u "
-                + "ü &uuml; u "
-                + "ý &yacute; y "
-                + "þ &thorn; t "
-                + "ÿ &yuml; y" ).split( ' ' );
+            = [
+                  "À", "&Agrave;", "A",
+                  "Á", "&Aacute;", "A",
+                  "Â", "&Acirc;", "A",
+                  "Ã", "&Atilde;", "A",
+                  "Ä", "&Auml;", "A",
+                  "Å", "&Aring;", "A",
+                  "Æ", "&AElig;", "A",
+                  "Ç", "&Ccedil;", "C",
+                  "È", "&Egrave;", "E",
+                  "É", "&Eacute;", "E",
+                  "Ê", "&Ecirc;", "E",
+                  "Ë", "&Euml;", "E",
+                  "Ì", "&Igrave;", "I",
+                  "Í", "&Iacute;", "I",
+                  "Î", "&Icirc;", "I",
+                  "Ï", "&Iuml;", "I",
+                  "Ð", "&ETH;", "D",
+                  "Ñ", "&Ntilde;", "N",
+                  "Ò", "&Ograve;", "O",
+                  "Ó", "&Oacute;", "O",
+                  "Ô", "&Ocirc;", "O",
+                  "Õ", "&Otilde;", "O",
+                  "Ö", "&Ouml;", "O",
+                  "Ø", "&Oslash;", "O",
+                  "Ù", "&Ugrave;", "U",
+                  "Ú", "&Uacute;", "U",
+                  "Û", "&Ucirc;", "U",
+                  "Ü", "&Uuml;", "U",
+                  "Ý", "&Yacute;", "Y",
+                  "Þ", "&THORN;", "D",
+                  "ß", "&szlig;", "s",
+                  "à", "&agrave;", "a",
+                  "á", "&aacute;", "a",
+                  "â", "&acirc;", "a",
+                  "ã", "&atilde;", "a",
+                  "ä", "&auml;", "a",
+                  "å", "&aring;", "a",
+                  "æ", "&aelig;", "a",
+                  "ç", "&ccedil;", "c",
+                  "è", "&egrave;", "e",
+                  "é", "&eacute;", "e",
+                  "ê", "&ecirc;", "e",
+                  "ë", "&euml;", "e",
+                  "ì", "&igrave;", "i",
+                  "í", "&iacute;", "i",
+                  "î", "&icirc;", "i",
+                  "ï", "&iuml;", "i",
+                  "ð", "&eth;", "o",
+                  "ñ", "&ntilde;", "n",
+                  "ò", "&ograve;", "o",
+                  "ó", "&oacute;", "o",
+                  "ô", "&ocirc;", "o",
+                  "õ", "&otilde;", "o",
+                  "ö", "&ouml;", "o",
+                  "ø", "&oslash;", "o",
+                  "ù", "&ugrave;", "u",
+                  "ú", "&uacute;", "u",
+                  "û", "&ucirc;", "u",
+                  "ü", "&uuml;", "u",
+                  "ý", "&yacute;", "y",
+                  "þ", "&thorn;", "t",
+                  "ÿ", "&yuml;", "y"
+              ];
 
         if ( text_is_html )
         {
