@@ -24,7 +24,7 @@
 
     .bar-row, .bar-row *
     {
-        font-size : 0.8vw;
+        font-size : 0.7rem;
     }
 
     .text-input
@@ -57,6 +57,7 @@
             <td>
                 <button onclick="Latinize()">Latinize</button>
                 <button onclick="Vulcanize()">Vulcanize</button>
+                <button onclick="Shavianize()">Shavianize</button>
                 <input id="IsHtml" type="checkbox" checked>HTML
             </td>
         </tr>
@@ -65,7 +66,7 @@
 <script>
     // -- CONSTANTS
 
-    const LatinWordTable =
+    const LatinWordArray =
         (
             "cum omnis res ab imperatore delegata intentiorem exigat "
             + "curam et me seu naturalis sollicitudo seu fides sedula non ad "
@@ -6987,6 +6988,57 @@
             + "contendit "
         ).split( " " );
 
+    const ShavianCharacterArrayByPhonemeMap =
+        {
+            'air': [ '𐑬' ],
+            'ure': [ '𐑰' ],
+            'ar': [ '𐑭' ],
+            'aw': [ '𐑮' ],
+            'ch': [ '𐑥' ],
+            'ea': [ '𐑱' ],
+            'ee': [ '𐑫' ],
+            'er': [ '𐑮' ],
+            'ie': [ '𐑤' ],
+            'ir': [ '𐑴' ],
+            'ng': [ '𐑯' ],
+            'oe': [ '𐑹' ],
+            'oi': [ '𐑹' ],
+            'oo': [ '𐑳', '𐑲' ],
+            'or': [ '𐑳' ],
+            'ou': [ '𐑷' ],
+            'sh': [ '𐑑' ],
+            'th': [ '𐑞' ],
+            'ue': [ '𐑳' ],
+            'ur': [ '𐑲' ],
+            'wh': [ '𐑱' ],
+            'a': [ '𐑨' ],
+            'b': [ '𐑚' ],
+            'c': [ '𐑒' ],
+            'd': [ '𐑛' ],
+            'e': [ '𐑫' ],
+            'f': [ '𐑝' ],
+            'g': [ '𐑒' ],
+            'h': [ '𐑣' ],
+            'i': [ '𐑩' ],
+            'j': [ '𐑡' ],
+            'k': [ '𐑒' ],
+            'l': [ '𐑤' ],
+            'm': [ '𐑥' ],
+            'n': [ '𐑦' ],
+            'o': [ '𐑳' ],
+            'p': [ '𐑧' ],
+            'q': [ '𐑢' ],
+            'r': [ '𐑭' ],
+            's': [ '𐑮' ],
+            't': [ '𐑯' ],
+            'u': [ '𐑷' ],
+            'v': [ '𐑰' ],
+            'w': [ '𐑱' ],
+            'x': [ '𐑲' ],
+            'y': [ '𐑴' ],
+            'z': [ '𐑵' ]
+        };
+
     // -- VARIABLES
 
     var
@@ -7059,7 +7111,7 @@
               pick_index < 100;
               ++pick_index )
         {
-            latin_word = LatinWordTable[ Math.floor( GetRandomReal() * LatinWordTable.length ) ];
+            latin_word = LatinWordArray[ Math.floor( GetRandomReal() * LatinWordArray.length ) ];
 
             if ( PriorLatinWordArray.indexOf( latin_word ) < 0 )
             {
@@ -7481,6 +7533,89 @@
                  || ( old_character >= 'A' && old_character <= 'Z' ) )
             {
                 new_text += new_letter_list_text[ old_letter_list_text.indexOf( old_character ) ];
+            }
+            else
+            {
+                new_text += old_character;
+
+                if ( old_text_is_html )
+                {
+                    if ( old_character === '<' )
+                    {
+                        while ( old_character_index + 1 < old_text.length
+                                && old_text[ old_character_index + 1 ] !== '>' )
+                        {
+                            ++old_character_index;
+
+                            new_text += old_text[ old_character_index ];
+                        }
+                    }
+                    else if ( old_character === '&' )
+                    {
+                        while ( old_character_index + 1 < old_text.length
+                                && old_text[ old_character_index + 1 ] !== ';' )
+                        {
+                            ++old_character_index;
+
+                            new_text += old_text[ old_character_index ];
+                        }
+                    }
+                }
+            }
+        }
+
+        document.getElementById( "NewText" ).value = new_text;
+    }
+
+    // ~~
+
+    function Shavianize(
+        )
+    {
+        var
+            character_array,
+            lower_case_old_text,
+            new_letter_list_text,
+            new_text,
+            old_character,
+            old_character_index,
+            old_letter_list_text,
+            old_text,
+            old_text_is_html,
+            phoneme,
+            phoneme_character_count;
+
+        old_text_is_html = document.getElementById( "IsHtml" ).checked;
+        old_text = document.getElementById( "OldText" ).value;
+        lower_case_old_text = old_text.toLowerCase();
+
+        new_text = "";
+
+        for ( old_character_index = 0;
+              old_character_index < old_text.length;
+              ++old_character_index )
+        {
+            old_character = old_text[ old_character_index ];
+
+            if ( ( old_character >= 'a' && old_character <= 'z' )
+                 || ( old_character >= 'A' && old_character <= 'Z' ) )
+            {
+                phoneme_character_count = 1;
+
+                for ( [ phoneme, character_array ] of Object.entries( ShavianCharacterArrayByPhonemeMap ) )
+                {
+                    phoneme_character_count = phoneme.length;
+
+                    if ( old_character_index + phoneme_character_count <= old_text.length
+                         && lower_case_old_text.slice( old_character_index, old_character_index + phoneme_character_count ) === phoneme )
+                    {
+                        new_text += character_array[ GetRandomNatural() % character_array.length ];
+
+                        break;
+                    }
+                }
+
+                old_character_index += phoneme_character_count - 1;
             }
             else
             {
