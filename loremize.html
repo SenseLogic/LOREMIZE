@@ -53,6 +53,10 @@
                 <input id="WordCount" class="text-input" type="text" value="20"/>
                 Columns:
                 <input id="ColumnCount" class="text-input" type="text" value="65"/>
+                Line separator:
+                <input id="LineSeparator" class="text-input" type="text" value="¶"/>
+                Paragraph separator:
+                <input id="ParagraphSeparator" class="text-input" type="text" value="¶¶"/>
             </td>
             <td>
                 <button onclick="Latinize()">Latinize</button>
@@ -7361,8 +7365,10 @@
             column_count,
             latin_word,
             line,
+            line_separator,
             paragraph_count,
             paragraph_index,
+            paragraph_separator,
             phrase_count,
             phrase_index,
             text,
@@ -7373,6 +7379,8 @@
         phrase_count = document.getElementById( "PhraseCount" ).value * 1;
         word_count = document.getElementById( "WordCount" ).value * 1;
         column_count = document.getElementById( "ColumnCount" ).value * 1;
+        line_separator = document.getElementById( "LineSeparator" ).value.replaceAll( "¶", "\n" );
+        paragraph_separator = document.getElementById( "ParagraphSeparator" ).value.replaceAll( "¶", "\n" );
 
         text = "";
 
@@ -7401,7 +7409,13 @@
 
                     if ( line.length + latin_word.length > column_count )
                     {
-                        text += "\n";
+                        if ( line_separator !== ''
+                             && text.endsWith( ' ' ) )
+                        {
+                            text = text.slice( 0, -1 );
+                        }
+
+                        text += line_separator;
                         line = "";
                     }
 
@@ -7421,7 +7435,13 @@
                 }
             }
 
-            text += "\n\n";
+            if ( paragraph_separator !== ''
+                 && text.endsWith( ' ' ) )
+            {
+                text = text.slice( 0, -1 );
+            }
+
+            text += paragraph_separator;
         }
 
         text = text.split( " \n" ).join( "\n" );
@@ -7497,9 +7517,9 @@
 
         document.getElementById( "NewText" ).value = new_text;
     }
-    
+
     // ~~
-    
+
     function GetTransliteratedText(
         old_text,
         old_text_is_html,
@@ -7595,8 +7615,8 @@
         )
     {
         Latinize();
-        
-        document.getElementById( "NewText" ).value 
+
+        document.getElementById( "NewText" ).value
             = GetTransliteratedText(
                   document.getElementById( "NewText" ).value,
                   document.getElementById( "IsHtml" ).checked,
@@ -7631,15 +7651,15 @@
                 false
                 );
     }
-    
+
     // ~~
 
     function Arabize(
         )
     {
         Latinize();
-        
-        document.getElementById( "NewText" ).value 
+
+        document.getElementById( "NewText" ).value
             = GetTransliteratedText(
                   document.getElementById( "NewText" ).value,
                   document.getElementById( "IsHtml" ).checked,
@@ -7681,8 +7701,8 @@
         )
     {
         Latinize();
-        
-        document.getElementById( "NewText" ).value 
+
+        document.getElementById( "NewText" ).value
             = GetTransliteratedText(
                   document.getElementById( "NewText" ).value,
                   document.getElementById( "IsHtml" ).checked,
@@ -7724,8 +7744,8 @@
         )
     {
         Latinize();
-        
-        document.getElementById( "NewText" ).value 
+
+        document.getElementById( "NewText" ).value
             = GetTransliteratedText(
                   document.getElementById( "NewText" ).value,
                   document.getElementById( "IsHtml" ).checked,
@@ -7786,4 +7806,5 @@
     // -- STATEMENTS
 
     SetRandomSeeds( 901161727, 942678731, 962084573, 965984691 );
+    Loremize();
 </script>
