@@ -61,9 +61,14 @@
             <td>
                 <button onclick="Latinize()">Latinize</button>
                 <button onclick="Vulcanize()">Vulcanize</button>
-                <button onclick="Arabize()">Arabize</button>
-                <button onclick="Hebrewize()">Hebrewize</button>
+                <button onclick="Greekize()">Greekize</button>
+                <button onclick="Russianize()">Russianize</button>
                 <button onclick="Shavianize()">Shavianize</button>
+                <button onclick="Hebrewize()">Hebrewize</button>
+                <button onclick="Arabize()">Arabize</button>
+                <button onclick="Japanize()">Japanize</button>
+                <button onclick="Koreanize()">Koreanize</button>
+                <button onclick="Sinicize()">Sinicize</button>
                 <input id="IsHtml" type="checkbox" checked>HTML
             </td>
         </tr>
@@ -6994,57 +6999,6 @@
             + "contendit "
         ).split( " " );
 
-    const ShavianCharacterArrayByPhonemeMap =
-        {
-            'air': [ '𐑬' ],
-            'ure': [ '𐑰' ],
-            'ar': [ '𐑭' ],
-            'aw': [ '𐑮' ],
-            'ch': [ '𐑥' ],
-            'ea': [ '𐑱' ],
-            'ee': [ '𐑫' ],
-            'er': [ '𐑮' ],
-            'ie': [ '𐑤' ],
-            'ir': [ '𐑴' ],
-            'ng': [ '𐑯' ],
-            'oe': [ '𐑹' ],
-            'oi': [ '𐑹' ],
-            'oo': [ '𐑳', '𐑲' ],
-            'or': [ '𐑳' ],
-            'ou': [ '𐑷' ],
-            'sh': [ '𐑑' ],
-            'th': [ '𐑞' ],
-            'ue': [ '𐑳' ],
-            'ur': [ '𐑲' ],
-            'wh': [ '𐑱' ],
-            'a': [ '𐑨' ],
-            'b': [ '𐑚' ],
-            'c': [ '𐑒' ],
-            'd': [ '𐑛' ],
-            'e': [ '𐑫' ],
-            'f': [ '𐑝' ],
-            'g': [ '𐑒' ],
-            'h': [ '𐑣' ],
-            'i': [ '𐑩' ],
-            'j': [ '𐑡' ],
-            'k': [ '𐑒' ],
-            'l': [ '𐑤' ],
-            'm': [ '𐑥' ],
-            'n': [ '𐑦' ],
-            'o': [ '𐑳' ],
-            'p': [ '𐑧' ],
-            'q': [ '𐑢' ],
-            'r': [ '𐑭' ],
-            's': [ '𐑮' ],
-            't': [ '𐑯' ],
-            'u': [ '𐑷' ],
-            'v': [ '𐑰' ],
-            'w': [ '𐑱' ],
-            'x': [ '𐑲' ],
-            'y': [ '𐑴' ],
-            'z': [ '𐑵' ]
-        };
-
     // -- VARIABLES
 
     var
@@ -7524,23 +7478,29 @@
         old_text,
         old_text_is_html,
         character_by_phoneme_map,
-        case_is_ignored
+        case_is_ignored,
+        duplication_is_ignored
         )
     {
         var
             character,
             lower_case_old_text,
-            new_letter_list_text,
             new_text,
             old_character,
             old_character_index,
-            old_letter_list_text,
             phoneme,
-            phoneme_character_count;
+            phoneme_character_count,
+            prior_old_character,
+            sorted_phoneme_character_entry_array;
+
+        sorted_phoneme_character_entry_array
+            = Object.entries( character_by_phoneme_map ).sort( ( first_entry, second_entry ) => second_entry[ 0 ].length - first_entry[ 0 ].length );
 
         lower_case_old_text = old_text.toLowerCase();
 
         new_text = "";
+
+        prior_old_character = "";
 
         for ( old_character_index = 0;
               old_character_index < old_text.length;
@@ -7551,30 +7511,46 @@
             if ( ( old_character >= 'a' && old_character <= 'z' )
                  || ( old_character >= 'A' && old_character <= 'Z' ) )
             {
-                phoneme_character_count = 1;
-
-                for ( [ phoneme, character ] of Object.entries( character_by_phoneme_map ) )
+                if ( !duplication_is_ignored
+                     || old_character.toLowerCase() !== prior_old_character.toLowerCase() )
                 {
-                    phoneme_character_count = phoneme.length;
-
-                    if ( old_character_index + phoneme_character_count <= old_text.length
-                         && lower_case_old_text.slice( old_character_index, old_character_index + phoneme_character_count ) === phoneme )
+                    for ( [ phoneme, character ] of sorted_phoneme_character_entry_array )
                     {
-                        if ( case_is_ignored
-                             || ( old_character >= 'a' && old_character <= 'z' ) )
-                        {
-                            new_text += character;
-                        }
-                        else
-                        {
-                            new_text += character.toUpperCase();
-                        }
+                        phoneme_character_count = phoneme.length;
 
-                        break;
+                        if ( old_character_index + phoneme_character_count <= old_text.length
+                             && lower_case_old_text.slice( old_character_index, old_character_index + phoneme_character_count ) === phoneme )
+                        {
+                            if ( case_is_ignored
+                                 || ( old_character >= 'a' && old_character <= 'z' ) )
+                            {
+                                if ( Array.isArray( character ) )
+                                {
+                                    new_text += character[ Math.floor( GetRandomReal() * character.length ) ];
+                                }
+                                else
+                                {
+                                    new_text += character;
+                                }
+                            }
+                            else
+                            {
+                                if ( Array.isArray( character ) )
+                                {
+                                    new_text += character[ Math.floor( GetRandomReal() * character.length ) ].toUpperCase();
+                                }
+                                else
+                                {
+                                    new_text += character.toUpperCase();
+                                }
+                            }
+
+                            old_character_index += phoneme_character_count - 1;
+
+                            break;
+                        }
                     }
                 }
-
-                old_character_index += phoneme_character_count - 1;
             }
             else
             {
@@ -7604,6 +7580,8 @@
                     }
                 }
             }
+
+            prior_old_character = old_character;
         }
 
         return new_text;
@@ -7621,40 +7599,41 @@
                   document.getElementById( "NewText" ).value,
                   document.getElementById( "IsHtml" ).checked,
                   {
-                    "a": "o",
-                    "o": "e",
-                    "e": "a",
-                    "u": "y",
-                    "i": "u",
-                    "y": "i",
-                    "l": "l",
-                    "m": "m",
-                    "r": "r",
-                    "n": "n",
-                    "s": "d",
-                    "d": "t",
-                    "t": "s",
-                    "f": "v",
-                    "v": "w",
-                    "w": "f",
-                    "c": "g",
-                    "g": "c",
-                    "x": "q",
-                    "q": "x",
-                    "h": "h",
-                    "k": "k",
-                    "p": "b",
-                    "b": "p",
-                    "j": "z",
-                    "z": "j"
-                },
-                false
-                );
+                    "a" : "o",
+                    "o" : "e",
+                    "e" : "a",
+                    "u" : "y",
+                    "i" : "u",
+                    "y" : "i",
+                    "l" : "l",
+                    "m" : "m",
+                    "r" : "r",
+                    "n" : "n",
+                    "s" : "d",
+                    "d" : "t",
+                    "t" : "s",
+                    "f" : "v",
+                    "v" : "w",
+                    "w" : "f",
+                    "c" : "g",
+                    "g" : "c",
+                    "x" : "q",
+                    "q" : "x",
+                    "h" : "h",
+                    "k" : "k",
+                    "p" : "b",
+                    "b" : "p",
+                    "j" : "z",
+                    "z" : "j"
+                  },
+                  false,
+                  false
+                  );
     }
 
     // ~~
 
-    function Arabize(
+    function Greekize(
         )
     {
         Latinize();
@@ -7664,40 +7643,44 @@
                   document.getElementById( "NewText" ).value,
                   document.getElementById( "IsHtml" ).checked,
                   {
-                      "a": "أ",
-                      "b": "ب",
-                      "c": "ك",
-                      "d": "د",
-                      "e": "إ",
-                      "f": "ف",
-                      "g": "ج",
-                      "h": "ه",
-                      "i": "ي",
-                      "j": "ج",
-                      "k": "ك",
-                      "l": "ل",
-                      "m": "م",
-                      "n": "ن",
-                      "o": "و",
-                      "p": "ب",
-                      "q": "ق",
-                      "r": "ر",
-                      "s": "س",
-                      "t": "ت",
-                      "u": "ء",
-                      "v": "ڤ",
-                      "w": "و",
-                      "x": "اكس",
-                      "y": "ي",
-                      "z": "ز"
+                      "a" : "α",
+                      "b" : "β",
+                      "ch" : "χ",
+                      "c" : "κ",
+                      "d" : "δ",
+                      "e" : "ε",
+                      "ph" : "φ",
+                      "f" : "φ",
+                      "g" : "γ",
+                      "h" : "η",
+                      "i" : "ι",
+                      "k" : "κ",
+                      "l" : "λ",
+                      "m" : "μ",
+                      "n" : "ν",
+                      "o" : "ο",
+                      "ps" : "ψ",
+                      "p" : "π",
+                      "q" : "κ",
+                      "r" : "ρ",
+                      "s" : "σ",
+                      "th" : "θ",
+                      "t" : "τ",
+                      "u" : "υ",
+                      "w" : "ω",
+                      "x" : "ξ",
+                      "y" : "υ",
+                      "z" : "ζ",
+                      "j" : "ϊ"
                   },
+                  true,
                   true
                   );
-      }
+    }
 
     // ~~
 
-    function Hebrewize(
+    function Russianize(
         )
     {
         Latinize();
@@ -7707,33 +7690,43 @@
                   document.getElementById( "NewText" ).value,
                   document.getElementById( "IsHtml" ).checked,
                   {
-                      "a": "א",
-                      "b": "ב",
-                      "c": "כ",
-                      "d": "ד",
-                      "e": "אֵ",
-                      "f": "פ",
-                      "g": "ג",
-                      "h": "ה",
-                      "i": "י",
-                      "j": "ג'",
-                      "k": "ק",
-                      "l": "ל",
-                      "m": "מ",
-                      "n": "נ",
-                      "o": "ע",
-                      "p": "פּ",
-                      "q": "ק",
-                      "r": "ר",
-                      "s": "ס",
-                      "t": "ת",
-                      "u": "או",
-                      "v": "ו",
-                      "w": "וו",
-                      "x": "כס",
-                      "y": "י",
-                      "z": "ז"
+                      "a" : "а",
+                      "b" : "б",
+                      "ch" : "ч",
+                      "c" : "ц",
+                      "d" : "д",
+                      "e" : "е",
+                      "f" : "ф",
+                      "g" : "г",
+                      "h" : "х",
+                      "i" : "и",
+                      "j" : "й",
+                      "k" : "к",
+                      "l" : "л",
+                      "m" : "м",
+                      "n" : "н",
+                      "o" : "о",
+                      "p" : "п",
+                      "r" : "р",
+                      "sh" : "ш",
+                      "s" : "с",
+                      "t" : "т",
+                      "u" : "у",
+                      "v" : "в",
+                      "w" : "в",
+                      "x" : "кс",
+                      "ya" : "я",
+                      "yu" : "ю",
+                      "y" : "ы",
+                      "zh" : "ж",
+                      "z" : "з",
+                      "yo" : "ё",
+                      "ts" : "ц",
+                      "ie" : "ье",
+                      "e" : "э",
+                      "q" : "к"
                   },
+                  true,
                   true
                   );
     }
@@ -7749,59 +7742,416 @@
             = GetTransliteratedText(
                   document.getElementById( "NewText" ).value,
                   document.getElementById( "IsHtml" ).checked,
-            {
-                'air': '𐑬',
-                'ure': '𐑰',
-                'ar': '𐑭',
-                'aw': '𐑮',
-                'ch': '𐑥',
-                'ea': '𐑱',
-                'ee': '𐑫',
-                'er': '𐑮',
-                'ie': '𐑤',
-                'ir': '𐑴',
-                'ng': '𐑯',
-                'oe': '𐑹',
-                'oi': '𐑹',
-                'oo': '𐑵',
-                'or': '𐑳',
-                'ou': '𐑷',
-                'sh': '𐑑',
-                'th': '𐑞',
-                'ue': '𐑳',
-                'ur': '𐑲',
-                'wh': '𐑱',
-                'a': '𐑨',
-                'b': '𐑚',
-                'c': '𐑒',
-                'd': '𐑛',
-                'e': '𐑫',
-                'f': '𐑝',
-                'g': '𐑒',
-                'h': '𐑣',
-                'i': '𐑩',
-                'j': '𐑡',
-                'k': '𐑒',
-                'l': '𐑤',
-                'm': '𐑥',
-                'n': '𐑦',
-                'o': '𐑳',
-                'p': '𐑧',
-                'q': '𐑢',
-                'r': '𐑭',
-                's': '𐑮',
-                't': '𐑯',
-                'u': '𐑷',
-                'v': '𐑰',
-                'w': '𐑱',
-                'x': '𐑲',
-                'y': '𐑴',
-                'z': '𐑵'
-            },
-            true
-            );
+                  {
+                      "air" : "𐑬",
+                      "ure" : "𐑰",
+                      "ar" : "𐑭",
+                      "aw" : "𐑮",
+                      "ch" : "𐑘",
+                      "ea" : "𐑱",
+                      "ee" : "𐑫",
+                      "er" : "𐑦",
+                      "ie" : "𐑦",
+                      "ir" : "𐑦",
+                      "ng" : "𐑙",
+                      "oe" : "𐑪",
+                      "oi" : "𐑪",
+                      "oo" : "𐑷",
+                      "or" : "𐑳",
+                      "ou" : "𐑴",
+                      "sh" : "𐑑",
+                      "th" : "𐑞",
+                      "ue" : "𐑳",
+                      "ur" : "𐑦",
+                      "wh" : "𐑓",
+                      "a" : "𐑰",
+                      "b" : "𐑚",
+                      "c" : "𐑒",
+                      "d" : "𐑛",
+                      "e" : "𐑭",
+                      "f" : "𐑓",
+                      "g" : "𐑜",
+                      "h" : "𐑣",
+                      "i" : "𐑦",
+                      "j" : "𐑡",
+                      "k" : "𐑒",
+                      "l" : "𐑤",
+                      "m" : "𐑥",
+                      "n" : "𐑯",
+                      "o" : "𐑪",
+                      "p" : "𐑔",
+                      "q" : "𐑖",
+                      "r" : "𐑮",
+                      "s" : "𐑕",
+                      "t" : "𐑑",
+                      "u" : "𐑷",
+                      "v" : "𐑝",
+                      "w" : "𐑢",
+                      "x" : "𐑧",
+                      "y" : "𐑳",
+                      "z" : "𐑟"
+                  },
+                  true,
+                  true
+                  );
     }
 
+    // ~~
+
+    function Hebrewize(
+        )
+    {
+        Latinize();
+
+        document.getElementById( "NewText" ).value
+            = GetTransliteratedText(
+                  document.getElementById( "NewText" ).value,
+                  document.getElementById( "IsHtml" ).checked,
+                  {
+                      "a" : "א",
+                      "b" : "ב",
+                      "c" : "כ",
+                      "d" : "ד",
+                      "e" : "אֵ",
+                      "f" : "פ",
+                      "g" : "ג",
+                      "h" : "ה",
+                      "i" : "י",
+                      "j" : "ג'",
+                      "k" : "ק",
+                      "l" : "ל",
+                      "m" : "מ",
+                      "n" : "נ",
+                      "o" : "ע",
+                      "p" : "פּ",
+                      "q" : "ק",
+                      "r" : "ר",
+                      "s" : "ס",
+                      "t" : "ת",
+                      "u" : "או",
+                      "v" : "ו",
+                      "w" : "וו",
+                      "x" : "כס",
+                      "y" : "י",
+                      "z" : "ז"
+                  },
+                  true,
+                  true
+                  );
+    }
+
+    // ~~
+
+    function Arabize(
+        )
+    {
+        Latinize();
+
+        document.getElementById( "NewText" ).value
+            = GetTransliteratedText(
+                  document.getElementById( "NewText" ).value,
+                  document.getElementById( "IsHtml" ).checked,
+                  {
+                      "a" : "أ",
+                      "b" : "ب",
+                      "c" : "ك",
+                      "d" : "د",
+                      "e" : "إ",
+                      "f" : "ف",
+                      "g" : "ج",
+                      "h" : "ه",
+                      "i" : "ي",
+                      "j" : "ج",
+                      "k" : "ك",
+                      "l" : "ل",
+                      "m" : "م",
+                      "n" : "ن",
+                      "o" : "و",
+                      "p" : "ب",
+                      "q" : "ق",
+                      "r" : "ر",
+                      "s" : "س",
+                      "t" : "ت",
+                      "u" : "ء",
+                      "v" : "ڤ",
+                      "w" : "و",
+                      "x" : "اكس",
+                      "y" : "ي",
+                      "z" : "ز"
+                  },
+                  true,
+                  true
+                  );
+    }
+
+    // ~~
+
+    function Japanize(
+        )
+    {
+        Latinize();
+
+        document.getElementById( "NewText" ).value
+            = GetTransliteratedText(
+                  document.getElementById( "NewText" ).value,
+                  document.getElementById( "IsHtml" ).checked,
+                  {
+                      "a" : [ "あ", "ア", "安" ],
+                      "bya" : [ "びゃ", "ビャ", "病" ],
+                      "byo" : [ "びょ", "ビョ", "秒" ],
+                      "byu" : [ "びゅ", "ビュ", "美" ],
+                      "ba" : [ "ば", "バ", "馬" ],
+                      "be" : [ "べ", "ベ", "別" ],
+                      "bi" : [ "び", "ビ", "美" ],
+                      "bo" : [ "ぼ", "ボ", "母" ],
+                      "bu" : [ "ぶ", "ブ", "部" ],
+                      "b" : [ "ぶ", "ブ" ],
+                      "cha" : [ "ちゃ", "チャ", "茶" ],
+                      "chi" : [ "ち", "チ", "知" ],
+                      "cho" : [ "ちょ", "チョ", "著" ],
+                      "chu" : [ "ちゅ", "チュ", "中" ],
+                      "c" : [ "く", "ク" ],
+                      "da" : [ "だ", "ダ", "太" ],
+                      "de" : [ "で", "デ", "出" ],
+                      "do" : [ "ど", "ド", "土" ],
+                      "d" : [ "ど", "ド" ],
+                      "e" : [ "え", "エ", "江" ],
+                      "fu" : [ "ふ", "フ", "不" ],
+                      "f" : [ "ふ", "フ" ],
+                      "gya" : [ "ぎゃ", "ギャ", "逆" ],
+                      "gyo" : [ "ぎょ", "ギョ", "魚" ],
+                      "gyu" : [ "ぎゅ", "ギュ", "牛" ],
+                      "ga" : [ "が", "ガ", "我" ],
+                      "ge" : [ "げ", "ゲ", "下" ],
+                      "gi" : [ "ぎ", "ギ", "義" ],
+                      "go" : [ "ご", "ゴ", "後" ],
+                      "gu" : [ "ぐ", "グ", "具" ],
+                      "g" : [ "ぐ", "グ" ],
+                      "hya" : [ "ひゃ", "ヒャ", "百" ],
+                      "hyo" : [ "ひょ", "ヒョ", "表" ],
+                      "hyu" : [ "ひゅ", "ヒュ", "氷" ],
+                      "ha" : [ "は", "ハ", "葉" ],
+                      "he" : [ "へ", "ヘ", "部" ],
+                      "hi" : [ "ひ", "ヒ", "日" ],
+                      "ho" : [ "ほ", "ホ", "保" ],
+                      "h" : [ "ふ", "フ" ],
+                      "i" : [ "い", "イ", "以" ],
+                      "ja" : [ "じゃ", "ジャ", "蛇" ],
+                      "jo" : [ "じょ", "ジョ", "女" ],
+                      "ju" : [ "じゅ", "ジュ", "受" ],
+                      "ji" : [ "じ", "ジ", "時" ],
+                      "j" : [ "じ", "ジ" ],
+                      "kya" : [ "きゃ", "キャ", "伽" ],
+                      "kyo" : [ "きょ", "キョ", "巨" ],
+                      "kyu" : [ "きゅ", "キュ", "求" ],
+                      "ka" : [ "か", "カ", "加" ],
+                      "ke" : [ "け", "ケ", "計" ],
+                      "ki" : [ "き", "キ", "木" ],
+                      "ko" : [ "こ", "コ", "子" ],
+                      "ku" : [ "く", "ク", "久" ],
+                      "k" : [ "く", "ク" ],
+                      "mya" : [ "みゃ", "ミャ", "宮" ],
+                      "myo" : [ "みょ", "ミョ", "妙" ],
+                      "myu" : [ "みゅ", "ミュ", "明" ],
+                      "ma" : [ "ま", "マ", "真" ],
+                      "me" : [ "め", "メ", "目" ],
+                      "mi" : [ "み", "ミ", "美" ],
+                      "mo" : [ "も", "モ", "毛" ],
+                      "mu" : [ "む", "ム", "夢" ],
+                      "m" : [ "む", "ム" ],
+                      "nya" : [ "にゃ", "ニャ", "娘" ],
+                      "nyo" : [ "にょ", "ニョ", "女" ],
+                      "nyu" : [ "にゅ", "ニュ", "入" ],
+                      "na" : [ "な", "ナ", "名" ],
+                      "ne" : [ "ね", "ネ", "音" ],
+                      "ni" : [ "に", "ニ", "二" ],
+                      "no" : [ "の", "ノ", "乃" ],
+                      "nu" : [ "ぬ", "ヌ", "奴" ],
+                      "n" : [ "ん", "ン", "ん" ],
+                      "o" : [ "お", "オ", "音" ],
+                      "pya" : [ "ぴゃ", "ピャ", "平" ],
+                      "pyo" : [ "ぴょ", "ピョ", "表" ],
+                      "pyu" : [ "ぴゅ", "ピュ", "票" ],
+                      "pa" : [ "ぱ", "パ", "派" ],
+                      "pe" : [ "ぺ", "ペ", "辺" ],
+                      "pi" : [ "ぴ", "ピ", "皮" ],
+                      "po" : [ "ぽ", "ポ", "歩" ],
+                      "pu" : [ "ぷ", "プ", "譜" ],
+                      "p" : [ "ぷ", "プ" ],
+                      "rya" : [ "りゃ", "リャ", "旅" ],
+                      "ryo" : [ "りょ", "リョ", "良" ],
+                      "ryu" : [ "りゅ", "リュ", "竜" ],
+                      "ra" : [ "ら", "ラ", "良" ],
+                      "re" : [ "れ", "レ", "礼" ],
+                      "ri" : [ "り", "リ", "利" ],
+                      "ro" : [ "ろ", "ロ", "路" ],
+                      "ru" : [ "る", "ル", "留" ],
+                      "r" : [ "る", "ル" ],
+                      "sha" : [ "しゃ", "シャ", "者" ],
+                      "sho" : [ "しょ", "ショ", "書" ],
+                      "shu" : [ "しゅ", "シュ", "主" ],
+                      "shi" : [ "し", "シ", "市" ],
+                      "sa" : [ "さ", "サ", "左" ],
+                      "se" : [ "せ", "セ", "世" ],
+                      "si" : [ "し", "シ", "市" ],
+                      "so" : [ "そ", "ソ", "祖" ],
+                      "su" : [ "す", "ス", "巣" ],
+                      "s" : [ "す", "ス" ],
+                      "tsu" : [ "つ", "ツ", "津" ],
+                      "ta" : [ "た", "タ", "田" ],
+                      "te" : [ "て", "テ", "手" ],
+                      "to" : [ "と", "ト", "止" ],
+                      "t" : [ "と", "ト" ],
+                      "u" : [ "う", "ウ", "宇" ],
+                      "wa" : [ "わ", "ワ", "和" ],
+                      "wo" : [ "を", "ヲ", "遠" ],
+                      "w" : [ "う", "ウ" ],
+                      "ya" : [ "や", "ヤ", "也" ],
+                      "yo" : [ "よ", "ヨ", "世" ],
+                      "yu" : [ "ゆ", "ユ", "由" ],
+                      "y" : [ "い", "イ" ],
+                      "za" : [ "ざ", "ザ", "座" ],
+                      "ze" : [ "ぜ", "ゼ", "是" ],
+                      "zi" : [ "じ", "ジ", "時" ],
+                      "zo" : [ "ぞ", "ゾ", "蔵" ],
+                      "zu" : [ "ず", "ズ", "図" ],
+                      "z" : [ "ず", "ズ" ]
+                  },
+                  true,
+                  true
+                  );
+    }
+
+    // ~~
+
+    function Koreanize(
+        )
+    {
+        Latinize();
+
+        document.getElementById( "NewText" ).value
+            = GetTransliteratedText(
+                  document.getElementById( "NewText" ).value,
+                  document.getElementById( "IsHtml" ).checked,
+                  {
+                      "ae" : [ "애", "에" ],
+                      "a" : [ "아", "앗", "알" ],
+                      "bb" : [ "ㅃ", "빠" ],
+                      "b" : [ "ㅂ", "비" ],
+                      "bye" : [ "뱨", "뱌" ],
+                      "byeo" : [ "뱨", "뱙" ],
+                      "ch" : [ "ㅊ", "치" ],
+                      "c" : [ "ㅋ", "크" ],
+                      "dd" : [ "ㄸ", "땋" ],
+                      "d" : [ "ㄷ", "디", "두" ],
+                      "de" : [ "데", "더" ],
+                      "do" : [ "도", "돗" ],
+                      "eo" : [ "어", "엉" ],
+                      "eu" : [ "으", "은" ],
+                      "e" : [ "에", "엣" ],
+                      "gg" : [ "ㄲ", "까" ],
+                      "g" : [ "ㄱ", "기" ],
+                      "h" : [ "ㅎ", "하" ],
+                      "ja" : [ "자", "쟈" ],
+                      "jj" : [ "ㅉ", "짜" ],
+                      "j" : [ "ㅈ", "지" ],
+                      "k" : [ "ㅋ", "크" ],
+                      "l" : [ "ㄹ", "라" ],
+                      "m" : [ "ㅁ", "마" ],
+                      "ng" : [ "ㅇ" ],
+                      "n" : [ "ㄴ", "나" ],
+                      "oe" : [ "외", "웨" ],
+                      "o" : [ "오", "옹" ],
+                      "pp" : [ "ㅃ", "빠" ],
+                      "p" : [ "ㅍ", "피" ],
+                      "r" : [ "ㄹ", "리" ],
+                      "ss" : [ "ㅆ", "싸" ],
+                      "s" : [ "ㅅ", "사" ],
+                      "sh" : [ "샤", "셔" ],
+                      "tt" : [ "ㄸ", "따" ],
+                      "t" : [ "ㅌ", "티" ],
+                      "ui" : [ "의", "읭" ],
+                      "u" : [ "우", "운" ],
+                      "wae" : [ "왜", "왱" ],
+                      "weo" : [ "워", "웡" ],
+                      "we" : [ "웨", "웬" ],
+                      "wi" : [ "위", "윙" ],
+                      "wa" : [ "와", "왓" ],
+                      "yae" : [ "얘", "얩" ],
+                      "yeo" : [ "여", "영" ],
+                      "ye" : [ "예", "옜" ],
+                      "yo" : [ "요", "욧" ],
+                      "yu" : [ "유", "육" ],
+                      "ya" : [ "야", "얏" ]
+                  },
+                  true,
+                  true
+                  );
+    }
+
+    // ~~
+
+    function Sinicize(
+        )
+    {
+        Latinize();
+
+        document.getElementById( "NewText" ).value
+            = GetTransliteratedText(
+                  document.getElementById( "NewText" ).value,
+                  document.getElementById( "IsHtml" ).checked,
+                  {
+                      "ang" : [ "昂", "盎", "肮" ],
+                      "an" : [ "安", "案", "暗" ],
+                      "ao" : [ "奥", "熬", "敖" ],
+                      "ai" : [ "爱", "埃", "哎" ],
+                      "a" : [ "啊", "阿", "吖" ],
+                      "ch" : [ "吃", "车", "驰" ],
+                      "c" : [ "西", "才", "参" ],
+                      "eng" : [ "鞥", "恩" ],
+                      "en" : [ "恩", "嗯", "根" ],
+                      "er" : [ "尔", "儿", "而" ],
+                      "ei" : [ "诶", "艾", "哎" ],
+                      "e" : [ "饿", "俄", "鹅" ],
+                      "ing" : [ "英", "映", "应" ],
+                      "ie" : [ "耶", "也", "叶" ],
+                      "iu" : [ "优", "由", "油" ],
+                      "i" : [ "衣", "伊", "依" ],
+                      "ong" : [ "翁", "公", "红" ],
+                      "ou" : [ "欧", "偶", "藕" ],
+                      "oe" : [ "外", "偶" ],
+                      "o" : [ "哦", "奥", "喔" ],
+                      "sh" : [ "是", "实", "十" ],
+                      "ss" : [ "斯", "思" ],
+                      "zh" : [ "知", "者", "正" ],
+                      "z" : [ "子", "在", "自" ],
+                      "b" : [ "不", "吧", "北" ],
+                      "d" : [ "的", "得", "地" ],
+                      "f" : [ "发", "非", "佛" ],
+                      "g" : [ "个", "格", "哥" ],
+                      "h" : [ "和", "喝", "赫" ],
+                      "j" : [ "鸡", "级", "纪" ],
+                      "k" : [ "可", "克", "开" ],
+                      "l" : [ "了", "力", "立" ],
+                      "m" : [ "么", "马", "米" ],
+                      "n" : [ "呢", "南", "男" ],
+                      "p" : [ "屁", "品", "配" ],
+                      "q" : [ "去", "起", "气" ],
+                      "r" : [ "日", "如", "然" ],
+                      "s" : [ "是", "斯", "思" ],
+                      "t" : [ "特", "天", "听" ],
+                      "ui" : [ "威", "伟", "未" ],
+                      "un" : [ "文", "温", "云" ],
+                      "u" : [ "乌", "吾", "屋" ],
+                      "v" : [ "维", "微", "魏" ],
+                      "w" : [ "吴", "物", "我" ],
+                      "x" : [ "西", "希", "息" ],
+                      "y" : [ "一", "以", "义" ]
+                  },
+                  true,
+                  true
+                  );
+    }
 
     // -- STATEMENTS
 
